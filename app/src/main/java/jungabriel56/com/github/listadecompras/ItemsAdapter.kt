@@ -7,9 +7,21 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+
+/**
+ * Classe ItemsAdapter que estende RecyclerView.Adapter.
+ * Esta classe é responsável por fornecer a visualização dos itens na lista e manipular os eventos de clique.
+ * Utiliza o padrão ViewHolder para melhorar o desempenho ao reutilizar as visualizações dos itens.
+ *
+ * @author Seu Nome
+ * @version 1.0
+ * @since 05/08/2021
+ *
+ */
+
 class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
 
-    private val items = mutableListOf<ItemModel>()
+    private var items = listOf<ItemModel>()
 
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -38,12 +50,8 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
         val item = items[position]
         holder.bind(item)
     }
-    fun addItem(newItem: ItemModel) {
-        items.add(newItem)
-        notifyDataSetChanged()
-    }
-    fun removeItem(item: ItemModel) {
-        items.remove(item)
+    fun updateItems(newItems: List<ItemModel>) {
+        items = newItems
         notifyDataSetChanged()
     }
 
